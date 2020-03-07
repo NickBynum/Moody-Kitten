@@ -70,11 +70,10 @@ function drawKittens() {
       <div class="d-flex justify-content-center">Mood: ${kitten.mood}</div>
       <div class="d-flex justify-content-center">Affection: ${kitten.affection}</div>
       <div class="d-flex space-between"></div>
-      <button onclick="pet('${kitten.id}')">Pet kitty</button>
+      <button class="btn-cancel" onclick="pet('${kitten.id}')">Pet kitty</button>
       <button onclick="catnip('${kitten.id}')">Catnip</button>
     </div>
  `
-
 })
 
 kittenElem.innerHTML = kittensTemplate
@@ -145,6 +144,7 @@ function setKittenMood(kitten) {
 function getStarted() {
   document.getElementById("welcome").remove();
   document.getElementById("add-div").classList.remove("hidden")
+  drawKittens()
 }
 /**
  * Defines the Properties of a Kitten
