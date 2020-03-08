@@ -26,13 +26,16 @@ let kitten = {
   mood: "tolerant",
   affection: 5,
 }
+if (form.name.value == "") {alert("You must enter a name")}
+
+else {
 
 kittens.push(kitten)
 saveKittens()
 
 form.reset()
 drawKittens()
-}
+}}
 /**
  * Converts the kittens array to a JSON string then
  * Saves the string to localstorage at the key kittens
@@ -64,14 +67,16 @@ function drawKittens() {
 
   kittens.forEach(kitten => {
     kittensTemplate +=`
-    <div class="bg-dark kitten ${kitten.mood} text-light">
+    <div class="cat-border bg-dark kitten ${kitten.mood} text-light">
       <img class="kitten" src="https://robohash.org/${kitten.name}?set=set4&size=150x150">
       <div class="d-flex justify-content-center">Name: ${kitten.name}</div>
       <div class="d-flex justify-content-center">Mood: ${kitten.mood}</div>
       <div class="d-flex justify-content-center">Affection: ${kitten.affection}</div>
       <div class="d-flex space-between"></div>
-      <button class="btn-cancel" onclick="pet('${kitten.id}')">Pet kitty</button>
-      <button onclick="catnip('${kitten.id}')">Catnip</button>
+      <button class="btn-cancel m-1" onclick="pet('${kitten.id}')">Pet kitty</button>
+      <button class="m-1" onclick="catnip('${kitten.id}')">Catnip</button>
+      <div class="d-flex justify-content-center"><i class="action fa fa-trash text-danger" onclick="removeKitten('${kitten.id}')"></i></div>
+      </div>
     </div>
  `
 })
@@ -162,4 +167,14 @@ function generateId() {
     "-" +
     Math.floor(Math.random() * 10000000)
   );
+}
+
+function removeKitten(id) {
+  console.log(id)
+  let index = kittens.findIndex(kitten => kitten.id == id)
+  if (index == -1) {
+    throw new Error("Invalid ID")
+  }
+  kittens.splice(index, 1)
+  saveKittens()
 }

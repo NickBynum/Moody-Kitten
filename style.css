@@ -116,11 +116,19 @@ button.btn-special:hover{
   margin: 0 .5em;
 }
 
+
+.cat-border{
+  border: .5em;
+  border-color: var(--light);
+}
+
 .card{
   background-color: var(--light);
   padding: 1em;
   box-shadow: var(--shadow);
   border-radius: var(--corners);
+  border: 1px;
+  border-color: var(--bg);
 }
 
 .shadow{
@@ -145,9 +153,11 @@ button.btn-special:hover{
 }
 .kitten.gone{
   color: var(--danger);
-  pointer-events: none;
+  pointer-events:none;
 }
-
+.kitten.gone :last-child {
+  pointer-events: all;
+}
 .bg-dark{
   background-color: var(--dark);
 }
